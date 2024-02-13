@@ -14,5 +14,12 @@ class Empleado (var salarioUnico: Int, var dependencia: String, var fechaIngreso
                 var empleadosSubordinados: MutableList<Empleado> = mutableListOf(),
                 var cargo: Cargo):Persona(nombre, documento, sexo, correo){
 
+    fun registrarSubordinado(empleado: Empleado){
+        empleadosSubordinados.add(empleado)
+    }
+
+    fun eliminarSubordinado(empleado: Empleado){
+        empleadosSubordinados.remove(empleado)
+    }
 
 }

@@ -6,5 +6,5 @@ package models
 * @param nombre: Nombre del cargo
 * @param nivelJerarquico: Nivel jerárquico del cargo
  */
-class Cargo (val nombre: String, val nivelJerarquico: Int) {
+class Cargo (var nombre: String, var nivelJerarquico: Int) {
 }
