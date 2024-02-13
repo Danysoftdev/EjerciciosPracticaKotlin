@@ -67,24 +67,32 @@ class Empresa (var nombre: String, var nit: Int, var direccion: String,
         return empleados.filter { it.dependencia == dependencia }.sumBy { it.salarioUnico }
     }
 
-    fun obtenerPorcentajeClientesHombres(): Double{
+    fun obtenerPorcentajeClientesSexo(sexo: Char): Double{
         val totalClientes = clientes.size
-        val clientesHombres = clientes.filter { it.sexo == 'M' }.size
-        return (clientesHombres.toDouble() / totalClientes.toDouble()) * 100
-    }
+        if (totalClientes == 0){
+            return 0.0
+        }
 
-    fun obtenerPorcentajeClientesMujeres(): Double{
-        val totalClientes = clientes.size
-        val clientesMujeres = clientes.filter { it.sexo == 'F' }.size
-        return (clientesMujeres.toDouble() / totalClientes.toDouble()) * 100
+        if (sexo == 'M'){
+            val clientesHombres = clientes.filter { it.sexo == 'M' }.size
+            return (clientesHombres.toDouble() / totalClientes.toDouble()) * 100
+        }else{
+            val clientesMujeres = clientes.filter { it.sexo == 'F' }.size
+            return (clientesMujeres.toDouble() / totalClientes.toDouble()) * 100
+        }
     }
 
     fun obtenerCantEmpleadosCargo(cargo: Cargo): Int{
         return empleados.filter { it.cargo == cargo }.size
     }
 
-    fun obtenerEmpleadoMasAntiguo(): Empleado?{
-        return empleados.minByOrNull { it.fechaIngreso }
+    fun obtenerEmpleadoMasAntiguo(): String?{
+        val empleadoAntiguo: Empleado? = empleados.minByOrNull { it.fechaIngreso }
+        if (empleadoAntiguo != null){
+            return empleadoAntiguo.nombre
+        }else{
+            return null
+        }
     }
 
 }

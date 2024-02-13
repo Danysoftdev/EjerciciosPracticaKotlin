@@ -10,9 +10,9 @@ package models
 * @param empleadosSubordinados: Empleados subordinados del empleado
 * @param cargo: Cargo del empleado
  */
-class Empleado (var salarioUnico: Int, var dependencia: String, var fechaIngreso: Int,
-                var empleadosSubordinados: MutableList<Empleado> = mutableListOf(),
-                var cargo: Cargo):Persona(nombre, documento, sexo, correo){
+class Empleado (nombre: String, documento: String, sexo: Char, correo: String,
+                var salarioUnico: Int, var dependencia: String, var fechaIngreso: Int, var cargo: Cargo,
+                var empleadosSubordinados: MutableList<Empleado> = mutableListOf()): Persona(nombre, documento, sexo, correo){
 
     fun registrarSubordinado(empleado: Empleado){
         empleadosSubordinados.add(empleado)
